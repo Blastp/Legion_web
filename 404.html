@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error 404 - Legionarios Football</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .error-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 2rem;
+        }
+        .error-code {
+            font-size: 8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 0;
+        }
+        .error-message {
+            font-size: 1.5rem;
+            margin: 1rem 0;
+        }
+        .home-button {
+            background: var(--gradient-primary);
+            color: var(--secondary-color);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            margin-top: 2rem;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+        .home-button:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <h1 class="error-code">404</h1>
+        <h2 class="error-message">¡Página no encontrada!</h2>
+        <p>Lo sentimos, la página que buscas no existe.</p>
+        <img src="imagesLGN/logo_trans.png" alt="Legionarios Logo" style="max-width: 200px; margin: 2rem 0;">
+        <a href="index.html" class="home-button">Volver al Inicio</a>
+    </div>
+</body>
+</html>
