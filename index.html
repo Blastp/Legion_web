@@ -26,9 +26,32 @@
 
     <!-- Hero Section -->
     <section class="hero">
+        <div class="hero-slider">
+            <div class="slide active" style="background-image: url('imagesLGN/equipo.JPG');">
+                <div class="slide-overlay"></div>
+            </div>
+            <div class="slide" style="background-image: url('imagesLGN/equipo2.jpg');">
+                <div class="slide-overlay"></div>
+            </div>
+            <div class="slide flag-todos-slide" style="background-image: url('imagesLGN/flag_todos.jpg');">
+                <div class="slide-overlay"></div>
+            </div>
+            <div class="slide copa-slide" style="background-image: url('imagesLGN/copa.jpg');">
+                <div class="slide-overlay"></div>
+            </div>
+        </div>
         <div class="hero-content">
-
             <h1>LEGIONARIOS FOOTBALL AMERICANO</h1>
+        </div>
+        <div class="slider-controls">
+            <button class="slider-btn prev" onclick="changeSlide(-1)">❮</button>
+            <button class="slider-btn next" onclick="changeSlide(1)">❯</button>
+        </div>
+        <div class="slider-dots">
+            <span class="dot active" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
         </div>
     </section>
 
@@ -60,14 +83,18 @@
                     <div class="divider-line"></div>
                     <p>FABA es la principal competencia de football americano en Argentina, la cual lleva a cabo el torneo de Flag y de Tackle</p>
                     <div class="teams-grid">
-                        <div class="team-card tackle-card">
-                            <h3>TACKLE FOOTBALL</h3>
-                            <p>Participamos en el torneo de tackle masculino, enfrentando a los equipos más competitivos de la región.</p>
-                        </div>
-                        <div class="team-card flag-card">
-                            <h3>FLAG FOOTBALL</h3>
-                            <p>Nuestros equipos masculino y femenino compiten en los torneos de flag organizados por FABA.</p>
-                        </div>
+                        <a href="tackle-football.html" class="team-card-link">
+                            <div class="team-card tackle-card">
+                                <h3>TACKLE FOOTBALL</h3>
+                                <p>Participamos en el torneo de tackle masculino, enfrentando a los equipos más competitivos de la región.</p>
+                            </div>
+                        </a>
+                        <a href="#flag" class="team-card-link">
+                            <div class="team-card flag-card">
+                                <h3>FLAG FOOTBALL</h3>
+                                <p>Nuestros equipos masculino y femenino compiten en los torneos de flag organizados por FABA.</p>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -79,17 +106,63 @@
         <div class="container">
             <h2>CALENDARIO</h2>
             <div class="events-grid">
-                <div class="event-card">
-                    <img src="imagesLGN/logo_oscuro.jpeg" alt="Flag Football">
-                    <h3>Flag Football</h3>
-                    <div class="event-date">Flag Football Femenino y Masculino</div>
+                <!-- Tarjeta Flag Football con efecto flip -->
+                <div class="flip-card" onclick="flipCard(this)">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="event-card">
+                                <img src="imagesLGN/logo_oscuro.jpeg" alt="Flag Football">
+                                <h3>Flag Football</h3>
+                                <div class="event-date">Flag Football Femenino y Masculino</div>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="event-card-back">
+                                <div class="back-content">
+                                    <div class="season-info">
+                                        <h4>FEMENINO:</h4>
+                                        <p>Fines de Marzo hasta mitad de Julio (playoffs incluídos).</p>
+                                    </div>
+                                    <div class="season-info">
+                                        <h4>MASCULINO:</h4>
+                                        <p>Fines de Marzo hasta fines de Julio (playoffs incluídos).</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="event-card">
-                    <img src="imagesLGN/casco.jpg" alt="Equipados">
-                    <h3>Equipados</h3>
-                    <div class="event-date">Tackle Football</div>
+
+                <!-- Tarjeta Equipados con efecto flip -->
+                <div class="flip-card" onclick="flipCard(this)">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="event-card">
+                                <img src="imagesLGN/casco.jpg" alt="Equipados">
+                                <h3>Equipados</h3>
+                                <div class="event-date">Tackle Football</div>
+                            </div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="event-card-back">
+                                <div class="back-content">
+                                    <div class="season-info">
+                                        <h4>PRETEMPORADA:</h4>
+                                        <p>Principios de Mayo hasta fines de Mayo</p>
+                                    </div>
+                                    <div class="season-info">
+                                        <h4>TEMPORADA:</h4>
+                                        <p>Fines de Mayo hasta principios de Octubre (15 semanas)</p>
+                                    </div>
+                                    <div class="season-info">
+                                        <h4>PLAYOFFS:</h4>
+                                        <p>Principio de Octubre hasta mitad de Octubre (Semifinal y Final)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <!-- Más eventos pueden ser agregados aquí -->
             </div>
         </div>
     </section>
@@ -109,7 +182,7 @@
                             <h3>MASCULINO</h3>
                             <p>El equipo masculino demuestra la fuerza y dedicación de nuestros jugadores.</p>
                         </div>
-                        <div class="team-card">
+                        <div class="team-card femenino-card">
                             <h3>FEMENINO</h3>
                             <p>El equipo femenino representa la fuerza y el talento de nuestras jugadoras.</p>
                         </div>
@@ -118,8 +191,6 @@
             </div>
         </div>
     </section>
-
-
 
     <!-- Contacto Section -->
     <section id="contact" class="section-gradient">
@@ -141,5 +212,6 @@
 
     <!-- Scripts -->
     <script src="main.js"></script>
+    <script src="navigation.js"></script>
 </body>
 </html>

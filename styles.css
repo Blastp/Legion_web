@@ -18,7 +18,8 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Arial', 'Helvetica Neue', sans-serif;
+    font-weight: 400;
     line-height: 1.6;
     color: var(--text-color);
 }
@@ -42,15 +43,23 @@ body {
     height: 50px;
 }
 
+.nav-brand a {
+    display: block;
+    text-decoration: none;
+}
+
 .nav-links {
     display: flex;
     gap: 2rem;
 }
 
 .nav-links a {
+    font-family: 'Arial', 'Helvetica Neue', sans-serif;
     color: var(--text-color);
     text-decoration: none;
     font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 1px;
     transition: all 0.3s ease;
     padding: 0.5rem 1rem;
     border-radius: 25px;
@@ -62,13 +71,11 @@ body {
     transform: translateY(-2px);
 }
 
-/* Hero Section */
+/* Hero Section with Slider */
 .hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('imagesLGN/equipo.JPG');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    position: relative;
     height: 100vh;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -76,17 +83,172 @@ body {
     padding-top: 80px;
 }
 
+.hero-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+}
+
 .hero-content {
+    position: relative;
+    z-index: 2;
     color: var(--text-color);
-    background: rgba(0, 0, 0, 0.85);
-    padding: 2rem 3rem;
-    border-radius: 15px;
-    backdrop-filter: blur(15px);
-    border: 3px solid var(--primary-color);
-    box-shadow: 0 0 30px rgba(255, 215, 0, 0.6), inset 0 0 20px rgba(0, 0, 0, 0.3);
     max-width: 80%;
     margin: 0 auto;
-    animation: heroGlow 3s ease-in-out infinite alternate;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin: 0;
+    
+    /* Efecto de texto más limpio */
+    text-shadow: 
+        2px 2px 0px var(--primary-color),
+        4px 4px 8px rgba(0,0,0,0.8),
+        6px 6px 15px rgba(0,0,0,0.6);
+    
+    /* Texto con degradado dorado */
+    background: linear-gradient(45deg, #FFD700, #FFF700, #FFD700, #B8860B);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    
+    /* Animación de brillo */
+    animation: textShine 3s ease-in-out infinite alternate;
+}
+
+.hero-subtitle {
+    color: var(--primary-color);
+    font-weight: bold;
+    letter-spacing: 3px;
+    font-size: 1.2rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+.slider-controls {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem;
+    z-index: 3;
+}
+
+.slider-btn {
+    background: rgba(255, 215, 0, 0.8);
+    border: none;
+    color: black;
+    font-size: 24px;
+    padding: 15px 20px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-btn:hover {
+    background: var(--primary-color);
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+}
+
+.slider-dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 3;
+}
+
+.dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: var(--primary-color);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+.dot:hover {
+    background: rgba(255, 215, 0, 0.8);
+}
+
+/* Hero específico para página Tackle */
+.tackle-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('imagesLGN/equipo.JPG');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-subtitle {
+    color: var(--primary-color);
+    font-weight: bold;
+    letter-spacing: 3px;
+    font-size: 1.2rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    margin-top: 1rem;
+}
+
+@keyframes textShine {
+    0% {
+        background-position: 0% 50%;
+        filter: brightness(1) contrast(1);
+    }
+    50% {
+        background-position: 100% 50%;
+        filter: brightness(1.2) contrast(1.1);
+    }
+    100% {
+        background-position: 0% 50%;
+        filter: brightness(1) contrast(1);
+    }
 }
 
 @keyframes heroGlow {
@@ -100,23 +262,14 @@ body {
     }
 }
 
-.hero-content h1 {
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 0 0 20px var(--primary-color);
-    letter-spacing: 2px;
-    margin-bottom: 1rem;
-    font-size: 2.5rem;
-    font-weight: bold;
+/* Ajuste específico para la slide de la copa */
+.copa-slide {
+    background-position: center 20% !important;
 }
 
-.hero-content .established {
-    color: var(--text-color);
-    font-weight: bold;
-    letter-spacing: 1px;
-}
-
-.hero-flag {
-    max-width: 200px;
-    margin-bottom: 2rem;
+/* Ajuste específico para la slide de flag_todos */
+.flag-todos-slide {
+    background-position: center 70% !important;
 }
 
 /* Section Styles */
@@ -151,6 +304,75 @@ body {
 #contact {
     background: var(--gradient-gold-black);
     color: var(--text-color);
+}
+
+/* Sección Tackle Football con mismo background que contacto */
+.tackle-section {
+    background: var(--gradient-gold-black);
+    color: var(--text-color);
+}
+
+.tackle-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.tackle-history {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.tackle-history h3 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.tackle-gallery {
+    text-align: center;
+}
+
+.tackle-gallery h3 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.gallery-item {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 1.5rem;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.gallery-item:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
+}
+
+.gallery-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.gallery-item p {
+    color: var(--text-color);
+    font-weight: 600;
+    text-align: center;
 }
 
 .section-dark {
@@ -213,9 +435,28 @@ body {
 }
 
 h2 {
+    font-family: 'Arial', 'Helvetica Neue', sans-serif;
+    font-weight: 700;
     text-align: center;
     margin-bottom: 3rem;
     font-size: 2.5rem;
+    letter-spacing: 2px;
+}
+
+h3 {
+    font-family: 'Arial', 'Helvetica Neue', sans-serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+p {
+    font-family: 'Arial', 'Helvetica Neue', sans-serif;
+    font-weight: 400;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
 }
 
 /* About Section */
@@ -265,8 +506,45 @@ h2 {
 /* Events Grid */
 .events-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: 1fr 1fr;
     gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Flip Card Styles */
+.flip-card {
+    background-color: transparent;
+    perspective: 1000px;
+    height: 300px;
+    cursor: pointer;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.flip-card-back {
+    transform: rotateY(180deg);
 }
 
 .event-card {
@@ -274,6 +552,9 @@ h2 {
     border-radius: 10px;
     overflow: hidden;
     transition: transform 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .event-card:hover {
@@ -282,24 +563,62 @@ h2 {
 
 .event-card img {
     width: 100%;
-    height: 200px;
+    height: 150px;
     object-fit: cover;
 }
 
 .event-card h3 {
     padding: 1rem;
     margin: 0;
-}
-
-.event-card p {
-    padding: 0 1rem;
+    color: var(--primary-color);
+    font-weight: bold;
 }
 
 .event-date {
     background: var(--accent-color);
+    color: var(--secondary-color);
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    margin-top: auto;
+}
+
+/* Estilos para el reverso de las tarjetas */
+.event-card-back {
+    background: var(--gradient-gold-black);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+    border-radius: 10px;
+}
+
+.back-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.2rem;
+}
+
+.season-info {
+    margin-bottom: 0;
+}
+
+.season-info h4 {
+    color: var(--secondary-color);
+    margin-bottom: 0.3rem;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: left;
+}
+
+.season-info p {
     color: var(--text-color);
-    padding: 0.5rem;
-    margin-top: 1rem;
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    text-align: left;
     font-weight: bold;
 }
 
@@ -511,13 +830,29 @@ footer {
     z-index: -1;
 }
 
+/* Estilo para enlace de tarjeta clickeable */
+.team-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.team-card-link:hover {
+    transform: translateY(-8px);
+}
+
+.team-card-link .team-card {
+    cursor: pointer;
+}
+
 .tackle-card::before {
     background-image: url('imagesLGN/equipo.JPG');
 }
 
 .flag-card::before {
-    background-image: url('imagesLGN/imagen_flag.jpg');
-    background-position: center 20%;
+    background-image: url('imagesLGN/flag_todos.jpg');
+    background-position: center 65%;
 }
 
 .masculino-card {
@@ -530,6 +865,29 @@ footer {
 
 .masculino-card::before {
     background-image: url('imagesLGN/imagen_flag.jpg');
+}
+
+.femenino-card {
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.femenino-card::before {
+    background-image: url('imagesLGN/flag_fem.jpg');
+}
+
+/* Tarjetas de la sección Tackle Football */
+.tackle-detail-card::before {
+    background-image: url('imagesLGN/casco.jpg');
+    background-position: center 30%;
+}
+
+.tackle-team-card::before {
+    background-image: url('imagesLGN/equipo2.jpg');
+    background-position: center 40%;
 }
 
 .team-card:hover {
