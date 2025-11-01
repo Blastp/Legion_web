@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Football Americano Argentina</title>
+    <link rel="icon" type="image/png" href="imagesLGN/logo_legion.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -14,6 +15,11 @@
             <div class="nav-brand">
                 <img src="imagesLGN/logo_trans.png" alt="Legionarios Logo" class="logo">
             </div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <div class="nav-links">
                 <a href="#about">Nosotros</a>
                 <a href="#leagues">Liga</a>
@@ -178,14 +184,18 @@
                     <p>El Flag Football es una modalidad sin contacto del fútbol americano, donde en lugar de tacklear se quitan banderas al portador del balón.</p>
                     <p>Contamos con equipos competitivos tanto en la rama masculina como femenina, participando activamente en la liga de FABA.</p>
                     <div class="teams-grid">
-                        <div class="team-card masculino-card">
-                            <h3>MASCULINO</h3>
-                            <p>El equipo masculino demuestra la fuerza y dedicación de nuestros jugadores.</p>
-                        </div>
-                        <div class="team-card femenino-card">
-                            <h3>FEMENINO</h3>
-                            <p>El equipo femenino representa la fuerza y el talento de nuestras jugadoras.</p>
-                        </div>
+                        <a href="flag-masculino.html" class="team-card-link">
+                            <div class="team-card masculino-card">
+                                <h3>MASCULINO</h3>
+                                <p>El equipo masculino demuestra la fuerza y dedicación de nuestros jugadores.</p>
+                            </div>
+                        </a>
+                        <a href="flag-femenino.html" class="team-card-link">
+                            <div class="team-card femenino-card">
+                                <h3>FEMENINO</h3>
+                                <p>El equipo femenino representa la fuerza y el talento de nuestras jugadoras.</p>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>

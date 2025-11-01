@@ -125,3 +125,59 @@ document.addEventListener('DOMContentLoaded', function() {
 function flipCard(card) {
     card.classList.toggle('flipped');
 }
+
+// Funcionalidad del botón "Volver arriba"
+document.addEventListener('DOMContentLoaded', function() {
+    const backToTopButton = document.getElementById('backToTop');
+    
+    if (backToTopButton) {
+        // Mostrar/ocultar el botón según el scroll
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+        
+        // Funcionalidad del click
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+
+    // Mobile Menu Toggle Functionality
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const navLinksContainer = document.querySelector('.nav-links');
+    
+    if (mobileMenuToggle && navLinksContainer) {
+        mobileMenuToggle.addEventListener('click', function() {
+            // Toggle active class on button for animation
+            this.classList.toggle('active');
+            
+            // Toggle active class on nav links for display
+            navLinksContainer.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        const mobileNavLinks = navLinksContainer.querySelectorAll('a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenuToggle.classList.remove('active');
+                navLinksContainer.classList.remove('active');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!mobileMenuToggle.contains(e.target) && 
+                !navLinksContainer.contains(e.target)) {
+                mobileMenuToggle.classList.remove('active');
+                navLinksContainer.classList.remove('active');
+            }
+        });
+    }
+});

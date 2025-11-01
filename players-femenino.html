@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jugadoras Flag Femenino - Legionarias Football Americano</title>
+    <link rel="icon" type="image/png" href="imagesLGN/logo_legion.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="players-page">
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="nav-brand">
+            <a href="index.html">
+                <img src="imagesLGN/logo_legion.png" alt="Legionarios Logo" class="logo">
+            </a>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Inicio</a>
+            <a href="index.html#about">Nosotros</a>
+            <a href="index.html#leagues">Liga</a>
+            <a href="index.html#calendar">Calendario</a>
+            <a href="index.html#flag">Flag Football</a>
+            <a href="index.html#contact">Contacto</a>
+        </nav>
+    </header>
+
+    <!-- Players Section -->
+    <section class="tackle-section">
+        <div class="container">
+            <h2>NUESTRAS JUGADORAS</h2>
+            <div class="players-grid">
+                
+                <!-- Jugadora 1 -->
+                <div class="player-card" onclick="togglePlayerInfo(this)">
+                    <div class="player-photo">
+                        <img src="imagesLGN/jugadora1_fem.jpg" alt="Jugadora 1">
+                        <div class="player-overlay">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Ver información</span>
+                        </div>
+                    </div>
+                    <div class="player-info">
+                        <h3>Información de la Jugadora</h3>
+                        <div class="player-details">
+                            <p><strong>Nombre:</strong> Sofia</p>
+                            <p><strong>Apellido:</strong> González</p>
+                            <p><strong>Edad:</strong> 21</p>
+                            <p><strong>Experiencia:</strong> 2 años</p>
+                            <p><strong>Posición:</strong> WR</p>
+                        </div>
+                        <button class="close-btn" onclick="event.stopPropagation(); togglePlayerInfo(this.parentElement.parentElement)">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Jugadora 2 -->
+                <div class="player-card" onclick="togglePlayerInfo(this)">
+                    <div class="player-photo">
+                        <img src="imagesLGN/jugadora2_fem.jpg" alt="Jugadora 2">
+                        <div class="player-overlay">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Ver información</span>
+                        </div>
+                    </div>
+                    <div class="player-info">
+                        <h3>Información de la Jugadora</h3>
+                        <div class="player-details">
+                            <p><strong>Nombre:</strong> Valentina</p>
+                            <p><strong>Apellido:</strong> Morales</p>
+                            <p><strong>Edad:</strong> 24</p>
+                            <p><strong>Experiencia:</strong> 4 años</p>
+                            <p><strong>Posición:</strong> QB</p>
+                        </div>
+                        <button class="close-btn" onclick="event.stopPropagation(); togglePlayerInfo(this.parentElement.parentElement)">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Jugadora 3 -->
+                <div class="player-card" onclick="togglePlayerInfo(this)">
+                    <div class="player-photo">
+                        <img src="imagesLGN/jugadora3_fem.jpg" alt="Jugadora 3">
+                        <div class="player-overlay">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Ver información</span>
+                        </div>
+                    </div>
+                    <div class="player-info">
+                        <h3>Información de la Jugadora</h3>
+                        <div class="player-details">
+                            <p><strong>Nombre:</strong> Camila</p>
+                            <p><strong>Apellido:</strong> Fernández</p>
+                            <p><strong>Edad:</strong> 26</p>
+                            <p><strong>Experiencia:</strong> 5 años</p>
+                            <p><strong>Posición:</strong> RB</p>
+                        </div>
+                        <button class="close-btn" onclick="event.stopPropagation(); togglePlayerInfo(this.parentElement.parentElement)">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Jugadora 4 -->
+                <div class="player-card" onclick="togglePlayerInfo(this)">
+                    <div class="player-photo">
+                        <img src="imagesLGN/jugadora4_fem.jpg" alt="Jugadora 4">
+                        <div class="player-overlay">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Ver información</span>
+                        </div>
+                    </div>
+                    <div class="player-info">
+                        <h3>Información de la Jugadora</h3>
+                        <div class="player-details">
+                            <p><strong>Nombre:</strong> Lucia</p>
+                            <p><strong>Apellido:</strong> Silva</p>
+                            <p><strong>Edad:</strong> 22</p>
+                            <p><strong>Experiencia:</strong> 3 años</p>
+                            <p><strong>Posición:</strong> DB</p>
+                        </div>
+                        <button class="close-btn" onclick="event.stopPropagation(); togglePlayerInfo(this.parentElement.parentElement)">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Jugadora 5 -->
+                <div class="player-card" onclick="togglePlayerInfo(this)">
+                    <div class="player-photo">
+                        <img src="imagesLGN/jugadora5_fem.jpg" alt="Jugadora 5">
+                        <div class="player-overlay">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Ver información</span>
+                        </div>
+                    </div>
+                    <div class="player-info">
+                        <h3>Información de la Jugadora</h3>
+                        <div class="player-details">
+                            <p><strong>Nombre:</strong> Isabella</p>
+                            <p><strong>Apellido:</strong> Torres</p>
+                            <p><strong>Edad:</strong> 25</p>
+                            <p><strong>Experiencia:</strong> 6 años</p>
+                            <p><strong>Posición:</strong> WR</p>
+                        </div>
+                        <button class="close-btn" onclick="event.stopPropagation(); togglePlayerInfo(this.parentElement.parentElement)">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Jugadora 6 -->
+                <div class="player-card" onclick="togglePlayerInfo(this)">
+                    <div class="player-photo">
+                        <img src="imagesLGN/jugadora6_fem.jpg" alt="Jugadora 6">
+                        <div class="player-overlay">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Ver información</span>
+                        </div>
+                    </div>
+                    <div class="player-info">
+                        <h3>Información de la Jugadora</h3>
+                        <div class="player-details">
+                            <p><strong>Nombre:</strong> Martina</p>
+                            <p><strong>Apellido:</strong> Ruiz</p>
+                            <p><strong>Edad:</strong> 23</p>
+                            <p><strong>Experiencia:</strong> 1 año</p>
+                            <p><strong>Posición:</strong> DB</p>
+                        </div>
+                        <button class="close-btn" onclick="event.stopPropagation(); togglePlayerInfo(this.parentElement.parentElement)">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Botón volver -->
+            <div class="back-button-section">
+                <a href="flag-femenino.html" class="back-btn">
+                    <i class="fas fa-arrow-left"></i> Volver a Flag Femenino
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <h2 class="golden-army">UNITE A LA GOLDEN ARMY</h2>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="main.js"></script>
+    <script src="navigation.js"></script>
+    <script>
+        function togglePlayerInfo(card) {
+            // Cerrar todas las demás tarjetas abiertas
+            const allCards = document.querySelectorAll('.player-card');
+            allCards.forEach(otherCard => {
+                if (otherCard !== card && otherCard.classList.contains('expanded')) {
+                    otherCard.classList.remove('expanded');
+                }
+            });
+            
+            // Toggle la tarjeta actual
+            card.classList.toggle('expanded');
+        }
+    </script>
+</body>
+</html>
