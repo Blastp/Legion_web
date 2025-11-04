@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Jugadores Flag Masculino - Legionarios Football Americano</title>
     <link rel="icon" type="image/png" href="imagesLGN/logo_legion.png">
     <link rel="stylesheet" href="styles.css">
@@ -35,7 +35,7 @@
                 <!-- Jugador 1 -->
                 <div class="player-card" onclick="togglePlayerInfo(this)">
                     <div class="player-photo">
-                        <img src="imagesLGN/jugador1_masc.jpg" alt="Jugador 1">
+                        <img src="imagesLGN/blas.jpeg" alt="Blas Ibáñez">
                         <div class="player-overlay">
                             <i class="fas fa-info-circle"></i>
                             <span>Ver información</span>
@@ -48,7 +48,7 @@
                             <p><strong>Apellido:</strong> Ibáñez</p>
                             <p><strong>Edad:</strong> 22</p>
                             <p><strong>Experiencia:</strong> 3 años</p>
-                            <p><strong>Posición:</strong> WR</p>
+                            <p><strong>Posición:</strong> RSH/WR</p>
                         </div>
                         <button class="close-btn" onclick="event.stopPropagation(); togglePlayerInfo(this.parentElement.parentElement)">
                             <i class="fas fa-times"></i>
@@ -59,7 +59,7 @@
                 <!-- Jugador 2 -->
                 <div class="player-card" onclick="togglePlayerInfo(this)">
                     <div class="player-photo">
-                        <img src="imagesLGN/jugador2_masc.jpg" alt="Jugador 2">
+                        <img src="imagesLGN/teo.jpg" alt="Teo">
                         <div class="player-overlay">
                             <i class="fas fa-info-circle"></i>
                             <span>Ver información</span>
@@ -68,11 +68,11 @@
                     <div class="player-info">
                         <h3>Información del Jugador</h3>
                         <div class="player-details">
-                            <p><strong>Nombre:</strong> Carlos</p>
-                            <p><strong>Apellido:</strong> Rodriguez</p>
-                            <p><strong>Edad:</strong> 25</p>
-                            <p><strong>Experiencia:</strong> 5 años</p>
-                            <p><strong>Posición:</strong> QB</p>
+                            <p><strong>Nombre:</strong> Teo</p>
+                            <p><strong>Apellido:</strong> Mazia</p>
+                            <p><strong>Edad:</strong> 18</p>
+                            <p><strong>Experiencia:</strong> 1 año</p>
+                            <p><strong>Posición:</strong> DB</p>
                         </div>
                         <button class="close-btn" onclick="event.stopPropagation(); togglePlayerInfo(this.parentElement.parentElement)">
                             <i class="fas fa-times"></i>
@@ -83,7 +83,7 @@
                 <!-- Jugador 3 -->
                 <div class="player-card" onclick="togglePlayerInfo(this)">
                     <div class="player-photo">
-                        <img src="imagesLGN/jugador3_masc.jpg" alt="Jugador 3">
+                        <img src="imagesLGN/fefe.jpg" alt="Fefe">
                         <div class="player-overlay">
                             <i class="fas fa-info-circle"></i>
                             <span>Ver información</span>
@@ -92,11 +92,11 @@
                     <div class="player-info">
                         <h3>Información del Jugador</h3>
                         <div class="player-details">
-                            <p><strong>Nombre:</strong> Martin</p>
-                            <p><strong>Apellido:</strong> Garcia</p>
-                            <p><strong>Edad:</strong> 28</p>
-                            <p><strong>Experiencia:</strong> 7 años</p>
-                            <p><strong>Posición:</strong> RB</p>
+                            <p><strong>Nombre:</strong> Franco</p>
+                            <p><strong>Apellido:</strong> Franceschetti</p>
+                            <p><strong>Edad:</strong> 32</p>
+                            <p><strong>Experiencia:</strong> 10 años</p>
+                            <p><strong>Posición:</strong> DB/WR</p>
                         </div>
                         <button class="close-btn" onclick="event.stopPropagation(); togglePlayerInfo(this.parentElement.parentElement)">
                             <i class="fas fa-times"></i>
@@ -107,7 +107,7 @@
                 <!-- Jugador 4 -->
                 <div class="player-card" onclick="togglePlayerInfo(this)">
                     <div class="player-photo">
-                        <img src="imagesLGN/jugador4_masc.jpg" alt="Jugador 4">
+                        <img src="imagesLGN/jowy.jpg" alt="Jowy">
                         <div class="player-overlay">
                             <i class="fas fa-info-circle"></i>
                             <span>Ver información</span>
@@ -116,11 +116,11 @@
                     <div class="player-info">
                         <h3>Información del Jugador</h3>
                         <div class="player-details">
-                            <p><strong>Nombre:</strong> Diego</p>
-                            <p><strong>Apellido:</strong> Lopez</p>
-                            <p><strong>Edad:</strong> 24</p>
-                            <p><strong>Experiencia:</strong> 4 años</p>
-                            <p><strong>Posición:</strong> DB</p>
+                            <p><strong>Nombre:</strong> Joel</p>
+                            <p><strong>Apellido:</strong> Mazia</p>
+                            <p><strong>Edad:</strong> 18</p>
+                            <p><strong>Experiencia:</strong> 1 año</p>
+                            <p><strong>Posición:</strong> WR/DB</p>
                         </div>
                         <button class="close-btn" onclick="event.stopPropagation(); togglePlayerInfo(this.parentElement.parentElement)">
                             <i class="fas fa-times"></i>
@@ -196,6 +196,11 @@
     <script src="navigation.js"></script>
     <script>
         function togglePlayerInfo(card) {
+            // Disable functionality on mobile devices
+            if (window.innerWidth <= 768) {
+                return;
+            }
+            
             // Cerrar todas las demás tarjetas abiertas
             const allCards = document.querySelectorAll('.player-card');
             allCards.forEach(otherCard => {

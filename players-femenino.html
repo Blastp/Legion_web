@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Jugadoras Flag Femenino - Legionarias Football Americano</title>
     <link rel="icon" type="image/png" href="imagesLGN/logo_legion.png">
     <link rel="stylesheet" href="styles.css">
@@ -35,7 +35,7 @@
                 <!-- Jugadora 1 -->
                 <div class="player-card" onclick="togglePlayerInfo(this)">
                     <div class="player-photo">
-                        <img src="imagesLGN/jugadora1_fem.jpg" alt="Jugadora 1">
+                        <img src="imagesLGN/flavia.jpeg" alt="Flavia" class="flavia-photo">
                         <div class="player-overlay">
                             <i class="fas fa-info-circle"></i>
                             <span>Ver información</span>
@@ -44,11 +44,11 @@
                     <div class="player-info">
                         <h3>Información de la Jugadora</h3>
                         <div class="player-details">
-                            <p><strong>Nombre:</strong> Sofia</p>
+                            <p><strong>Nombre:</strong> Flavia</p>
                             <p><strong>Apellido:</strong> González</p>
                             <p><strong>Edad:</strong> 21</p>
                             <p><strong>Experiencia:</strong> 2 años</p>
-                            <p><strong>Posición:</strong> WR</p>
+                            <p><strong>Posición:</strong> DB</p>
                         </div>
                         <button class="close-btn" onclick="event.stopPropagation(); togglePlayerInfo(this.parentElement.parentElement)">
                             <i class="fas fa-times"></i>
@@ -196,6 +196,11 @@
     <script src="navigation.js"></script>
     <script>
         function togglePlayerInfo(card) {
+            // Disable functionality on mobile devices
+            if (window.innerWidth <= 768) {
+                return;
+            }
+            
             // Cerrar todas las demás tarjetas abiertas
             const allCards = document.querySelectorAll('.player-card');
             allCards.forEach(otherCard => {

@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Flag Football Femenino - Legionarias Football Americano</title>
     <link rel="icon" type="image/png" href="imagesLGN/logo_legion.png">
     <link rel="stylesheet" href="styles.css">
@@ -26,8 +26,63 @@
         </nav>
     </header>
 
-    <!-- Hero Section Flag Femenino -->
+    <!-- Hero Section Flag Femenino with Slider -->
     <section class="hero flag-femenino-hero">
+        <div class="hero-slider">
+            <div class="slide active">
+                <img src="imagesLGN/femenino.slider.jpg" alt="Flag Femenino 1">
+                <div class="slide-overlay"></div>
+            </div>
+            <div class="slide">
+                <img src="imagesLGN/femenino.slider.0.JPG" alt="Flag Femenino 2">
+                <div class="slide-overlay"></div>
+            </div>
+            <div class="slide">
+                <img src="imagesLGN/femenino.slider.1.JPG" alt="Flag Femenino 3">
+                <div class="slide-overlay"></div>
+            </div>
+            <div class="slide">
+                <img src="imagesLGN/femenino.slider.2.jpg" alt="Flag Femenino 4">
+                <div class="slide-overlay"></div>
+            </div>
+            <div class="slide">
+                <img src="imagesLGN/femenino.slider.3.jpg" alt="Flag Femenino 5">
+                <div class="slide-overlay"></div>
+            </div>
+            <div class="slide">
+                <img src="imagesLGN/femenino.slider.4.jpg" alt="Flag Femenino 6">
+                <div class="slide-overlay"></div>
+            </div>
+            <div class="slide">
+                <img src="imagesLGN/femenino.slider.5.jpg" alt="Flag Femenino 7">
+                <div class="slide-overlay"></div>
+            </div>
+            <div class="slide">
+                <img src="imagesLGN/flag_fem.jpg" alt="Flag Femenino 8">
+                <div class="slide-overlay"></div>
+            </div>
+            
+            <!-- Navigation arrows -->
+            <button class="slider-nav prev" onclick="changeSlide(-1)">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="slider-nav next" onclick="changeSlide(1)">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            
+            <!-- Dots indicator -->
+            <div class="slider-dots">
+                <span class="dot active" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+                <span class="dot" onclick="currentSlide(5)"></span>
+                <span class="dot" onclick="currentSlide(6)"></span>
+                <span class="dot" onclick="currentSlide(7)"></span>
+                <span class="dot" onclick="currentSlide(8)"></span>
+            </div>
+        </div>
+        
         <div class="hero-content">
             <h1>FLAG FOOTBALL FEMENINO</h1>
         </div>
@@ -36,7 +91,6 @@
     <!-- Historia del Equipo -->
     <section class="tackle-section">
         <div class="container">
-            <h2>EQUIPO FEMENINO DE FLAG FOOTBALL</h2>
             <div class="tackle-content">
                 <div class="tackle-history">
                     <h3>LEGIÓN</h3>

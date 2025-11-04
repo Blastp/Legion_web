@@ -116,8 +116,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Inicializar el slider
     if (slides.length > 0) {
         showSlide(0);
-        // Cambiar slide automáticamente cada 5 segundos
-        setInterval(autoSlide, 5000);
+        // Cambiar slide automáticamente cada 4 segundos
+        setInterval(autoSlide, 4000);
     }
 });
 
@@ -181,3 +181,152 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// Individual Page Slider Functionality (Optimized for Performance)
+let individualSlideIndex = 0;
+let sliderInterval;
+let heroSlides = [];
+
+function initializeSlider() {
+    heroSlides = document.querySelectorAll('.hero-slider .slide');
+    if (heroSlides.length === 0) return false;
+    
+    // Preload images for smooth transitions
+    heroSlides.forEach((slide, index) => {
+        const img = slide.querySelector('img');
+        if (img && !img.complete) {
+            img.loading = 'eager';
+        }
+        // Remove active class from all slides except first
+        if (index === 0) {
+            slide.classList.add('active');
+        } else {
+            slide.classList.remove('active');
+        }
+    });
+    
+    return true;
+}
+
+function showSlide(index) {
+    if (!heroSlides.length) return;
+    
+    // Wrap around logic
+    if (index >= heroSlides.length) individualSlideIndex = 0;
+    else if (index < 0) individualSlideIndex = heroSlides.length - 1;
+    else individualSlideIndex = index;
+    
+    // Use requestAnimationFrame for smooth animations
+    requestAnimationFrame(() => {
+        heroSlides.forEach((slide, i) => {
+            if (i === individualSlideIndex) {
+                slide.classList.add('active');
+            } else {
+                slide.classList.remove('active');
+            }
+        });
+    });
+}
+
+function changeSlide(direction) {
+    individualSlideIndex += direction;
+    showSlide(individualSlideIndex);
+    
+    // Reset auto-play timer when manually navigating
+    if (sliderInterval) {
+        clearInterval(sliderInterval);
+        startAutoSlide();
+    }
+}
+
+function currentSlide(index) {
+    individualSlideIndex = index - 1;
+    showSlide(individualSlideIndex);
+    
+    // Reset auto-play timer
+    if (sliderInterval) {
+        clearInterval(sliderInterval);
+        startAutoSlide();
+    }
+}
+
+// Optimized auto-play slider
+function autoSlide() {
+    if (heroSlides.length > 0) {
+        showSlide(individualSlideIndex + 1);
+    }
+}
+
+function startAutoSlide() {
+    // Clear any existing interval
+    if (sliderInterval) {
+        clearInterval(sliderInterval);
+    }
+    // Start new interval with consistent timing
+    sliderInterval = setInterval(autoSlide, 4000);
+}
+
+// Initialize slider when page loads (Optimized)
+document.addEventListener('DOMContentLoaded', function() {
+    const heroSlider = document.querySelector('.hero-slider');
+    if (heroSlider) {
+        // Reset index and initialize
+        individualSlideIndex = 0;
+        
+        // Wait for DOM to be fully ready
+        setTimeout(() => {
+            if (initializeSlider()) {
+                // Start auto-play only after successful initialization
+                startAutoSlide();
+                
+                // Add touch support for mobile
+                addTouchSupport(heroSlider);
+            }
+        }, 100);
+    }
+});
+
+// Touch support for mobile slider navigation
+function addTouchSupport(slider) {
+    let startX = 0;
+    let startY = 0;
+    let isMoving = false;
+    
+    slider.addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        isMoving = false;
+    }, { passive: true });
+    
+    slider.addEventListener('touchmove', function(e) {
+        if (!isMoving) {
+            const diffX = Math.abs(e.touches[0].clientX - startX);
+            const diffY = Math.abs(e.touches[0].clientY - startY);
+            
+            // If horizontal swipe is more prominent than vertical
+            if (diffX > diffY && diffX > 30) {
+                isMoving = true;
+                e.preventDefault(); // Prevent scrolling
+            }
+        }
+    }, { passive: false });
+    
+    slider.addEventListener('touchend', function(e) {
+        if (isMoving) {
+            const endX = e.changedTouches[0].clientX;
+            const diffX = startX - endX;
+            
+            // Minimum swipe distance
+            if (Math.abs(diffX) > 50) {
+                if (diffX > 0) {
+                    // Swipe left - next slide
+                    changeSlide(1);
+                } else {
+                    // Swipe right - previous slide
+                    changeSlide(-1);
+                }
+            }
+        }
+        isMoving = false;
+    }, { passive: true });
+}
