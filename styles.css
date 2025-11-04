@@ -71,9 +71,9 @@ body {
     transform: translateY(-2px);
 }
 
-/* Mobile Menu Toggle */
+/* Mobile Menu Toggle - Always visible */
 .mobile-menu-toggle {
-    display: none;
+    display: flex;
     flex-direction: column;
     background: none;
     border: none;
@@ -825,17 +825,28 @@ section.animate-in {
 
 .social-links {
     display: flex;
-    gap: 2rem;
-    font-size: 2rem;
+    gap: 3rem;
+    font-size: 2.5rem;
+    justify-content: center;
+    align-items: center;
 }
 
 .social-links a {
     color: var(--secondary-color);
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+    padding: 1rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 60px;
+    min-height: 60px;
 }
 
 .social-links a:hover {
     color: var(--accent-color);
+    background: rgba(255, 215, 0, 0.1);
+    transform: scale(1.1);
 }
 
 /* Footer */
@@ -1131,7 +1142,95 @@ footer {
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav-links {
-        display: none;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        transition: right 0.3s ease;
+        z-index: 1000;
+        padding: 2rem;
+    }
+    
+    .nav-links.nav-open {
+        right: 0;
+    }
+    
+    .nav-links a {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--text-color);
+        text-decoration: none;
+        padding: 1rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        text-align: center;
+        width: 100%;
+    }
+    
+    .nav-links a:hover {
+        background: var(--primary-color);
+        color: var(--background-color);
+        transform: translateY(-2px);
+    }
+    
+    /* Prevenir scroll cuando el menú está abierto */
+    body.menu-open {
+        overflow: hidden;
+    }
+    
+    /* Arreglar slider principal en móviles */
+    .hero {
+        height: 100vh;
+        padding-top: 0;
+        min-height: 100vh;
+    }
+    
+    .hero-slider {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .hero-slider .slide {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .hero-slider .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    /* Calendar Mobile Fix */
+    #calendar {
+        padding: 2rem 1rem;
+        display: block !important;
+        visibility: visible !important;
+    }
+    
+    .events-grid {
+        display: flex !important;
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: center;
+        width: 100%;
+    }
+    
+    .flip-card {
+        width: 100% !important;
+        max-width: 300px;
+        height: 250px !important;
+        display: block !important;
+        visibility: visible !important;
     }
     
     .about-content {
@@ -1164,6 +1263,13 @@ footer {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+}
+
+/* Separar el título LEGIÓN del slider en páginas de flag */
+.flag-masculino-hero + .tackle-section,
+.flag-femenino-hero + .tackle-section {
+    margin-top: 0;
+    padding-top: 6rem;
 }
 
 /* Flag Section Styles */
@@ -1894,10 +2000,6 @@ body:has(.players-grid) .tackle-section {
         background: rgba(0, 0, 0, 0.95);
     }
     
-    .mobile-menu-toggle {
-        display: flex;
-    }
-    
     .nav-links {
         position: absolute;
         top: 100%;
@@ -2060,8 +2162,15 @@ body:has(.players-grid) .tackle-section {
     
     .social-links {
         justify-content: center;
-        gap: 1.5rem;
-        font-size: 1.8rem;
+        gap: 2.5rem;
+        font-size: 2.2rem;
+        padding: 1rem 0;
+    }
+    
+    .social-links a {
+        min-width: 70px;
+        min-height: 70px;
+        padding: 1.2rem;
     }
     
     /* Players */
@@ -2517,47 +2626,77 @@ body:has(.players-grid) .tackle-section {
     transform: scale(0.85) !important;
 }
 
-/* Specific adjustments for individual slider images */
-.hero-slider .slide:nth-child(3) img {
+/* Specific adjustments for individual slider images - usando nombres de archivo */
+.hero-slider .slide img[src*="masculino.slider.2"] {
     object-position: center 30% !important;
 }
 
-.hero-slider .slide:nth-child(4) img {
+.hero-slider .slide img[src*="masculino.slider.3"] {
     object-position: center 30% !important;
 }
 
-.hero-slider .slide:nth-child(5) img {
+.hero-slider .slide img[src*="masculino.slider.4"] {
     object-position: center 30% !important;
 }
 
-.hero-slider .slide:nth-child(6) img {
+.hero-slider .slide img[src*="masculino.slider.5"] {
     object-position: center -20% !important;
 }
 
-.hero-slider .slide:nth-child(7) img {
+.hero-slider .slide img[src*="masculino.slider.6"] {
     object-position: center 30% !important;
 }
 
-.hero-slider .slide:nth-child(8) img {
+.hero-slider .slide img[src*="masculino.slider.7"] {
     object-position: center -40% !important;
 }
 
-.hero-slider .slide:nth-child(9) img {
+.hero-slider .slide img[src*="masculino.slider.8"] {
     object-position: center -30% !important;
 }
 
-.hero-slider .slide:nth-child(10) img {
+.hero-slider .slide img[src*="masculino.slider.9"] {
     object-position: center 30% !important;
 }
 
-.hero-slider .slide:nth-child(11) img {
+.hero-slider .slide img[src*="masculino.slider.10"] {
     object-position: center -45% !important;
 }
 
-.hero-slider .slide:nth-child(14) img {
+.hero-slider .slide img[src*="masculino.slider.13"] {
     object-position: center 30% !important;
 }
 
-.hero-slider .slide:nth-child(15) img {
+.hero-slider .slide img[src*="masculino.slider.14"] {
     object-position: center 30% !important;
+}
+
+/* Ajustes específicos para imágenes de tackle slider */
+.hero-slider .slide img[src*="tackle.slider.1"] {
+    object-position: center 20% !important;
+}
+
+.hero-slider .slide img[src*="tackle.slider.2"] {
+    object-position: center 60% !important;
+}
+
+.hero-slider .slide img[src*="tackle.slider.4"] {
+    object-position: center -10% !important;
+}
+
+/* Ajuste específico para la foto de Marcela - sobrescribiendo nth-child(2) */
+.player-photo img[src*="marcela.jpg"],
+.player-card:nth-child(2) .player-photo img[src*="marcela.jpg"] {
+    object-position: center 10% !important;
+}
+
+/* Ajustar la foto de Flavia para que cubra completamente la tarjeta */
+.player-photo img[src*="flavia.jpeg"],
+.player-card:nth-child(1) .player-photo img[src*="flavia.jpeg"] {
+    object-fit: cover !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 350px !important;
+    object-position: center 20% !important;
+    transform: scale(1.05) !important;
 }

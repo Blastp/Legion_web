@@ -16,6 +16,11 @@
                 <img src="imagesLGN/logo_legion.png" alt="Legionarios Logo" class="logo">
             </a>
         </div>
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
         <nav class="nav-links">
             <a href="index.html">Inicio</a>
             <a href="index.html#about">Nosotros</a>
@@ -26,11 +31,39 @@
         </nav>
     </header>
 
-    <!-- Hero Section Tackle -->
+    <!-- Hero Section Tackle con Slider -->
     <section class="hero tackle-hero">
+        <div class="hero-slider">
+            <div class="slide active">
+                <img src="imagesLGN/tackle.slider.0.jpg" alt="Tackle Football 1">
+                <div class="slide-overlay"></div>
+            </div>
+            <div class="slide">
+                <img src="imagesLGN/tackle.slider.1.jpg" alt="Tackle Football 2">
+                <div class="slide-overlay"></div>
+            </div>
+            <div class="slide">
+                <img src="imagesLGN/tackle.slider.2.jpg" alt="Tackle Football 3">
+                <div class="slide-overlay"></div>
+            </div>
+            <div class="slide">
+                <img src="imagesLGN/tackle.slider.3.jpg" alt="Tackle Football 4">
+                <div class="slide-overlay"></div>
+            </div>
+            <div class="slide">
+                <img src="imagesLGN/tackle.slider.4.jpg" alt="Tackle Football 5">
+                <div class="slide-overlay"></div>
+            </div>
+        </div>
         <div class="hero-content">
-            <h1>TACKLE FOOTBALL</h1>
-            <div class="hero-subtitle">LEGIONARIOS EQUIPADOS</div>
+            <h1>LEGIONARIOS EQUIPADOS</h1>
+        </div>
+        <div class="slider-dots">
+            <span class="dot active" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+            <span class="dot" onclick="currentSlide(5)"></span>
         </div>
     </section>
 

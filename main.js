@@ -70,56 +70,8 @@ function contactWhatsApp() {
     window.open(whatsappUrl, '_blank');
 }
 
-// Funcionalidad del Slider Hero
-let currentSlideIndex = 0;
-const slides = document.querySelectorAll('.slide');
-const dots = document.querySelectorAll('.dot');
-
-function showSlide(index) {
-    // Remover clase active de todas las slides
-    slides.forEach(slide => slide.classList.remove('active'));
-    dots.forEach(dot => dot.classList.remove('active'));
-    
-    // Agregar clase active a la slide y dot actual
-    slides[index].classList.add('active');
-    dots[index].classList.add('active');
-}
-
-function changeSlide(direction) {
-    currentSlideIndex += direction;
-    
-    if (currentSlideIndex >= slides.length) {
-        currentSlideIndex = 0;
-    } else if (currentSlideIndex < 0) {
-        currentSlideIndex = slides.length - 1;
-    }
-    
-    showSlide(currentSlideIndex);
-}
-
-function currentSlide(index) {
-    currentSlideIndex = index - 1;
-    showSlide(currentSlideIndex);
-}
-
-// Auto-play del slider (cambia cada 5 segundos)
-function autoSlide() {
-    currentSlideIndex++;
-    if (currentSlideIndex >= slides.length) {
-        currentSlideIndex = 0;
-    }
-    showSlide(currentSlideIndex);
-}
-
-// Iniciar auto-play cuando carga la página
-document.addEventListener('DOMContentLoaded', function() {
-    // Inicializar el slider
-    if (slides.length > 0) {
-        showSlide(0);
-        // Cambiar slide automáticamente cada 4 segundos
-        setInterval(autoSlide, 4000);
-    }
-});
+// Funcionalidad del Slider Hero - CONSOLIDADA Y OPTIMIZADA
+// Esta funcionalidad está ahora manejada por las funciones optimizadas más abajo
 
 // Función para el efecto flip de las tarjetas del calendario
 function flipCard(card) {
@@ -186,10 +138,14 @@ document.addEventListener('DOMContentLoaded', function() {
 let individualSlideIndex = 0;
 let sliderInterval;
 let heroSlides = [];
+let isSliderTransitioning = false; // Prevent multiple rapid transitions
 
 function initializeSlider() {
     heroSlides = document.querySelectorAll('.hero-slider .slide');
     if (heroSlides.length === 0) return false;
+    
+    // Randomize slide order
+    randomizeSlides();
     
     // Preload images for smooth transitions
     heroSlides.forEach((slide, index) => {
@@ -208,8 +164,44 @@ function initializeSlider() {
     return true;
 }
 
+// Function to randomize slide order
+function randomizeSlides() {
+    const sliderContainer = document.querySelector('.hero-slider');
+    if (!sliderContainer || heroSlides.length === 0) return;
+    
+    // Convert NodeList to Array and shuffle
+    const slidesArray = Array.from(heroSlides);
+    
+    // Fisher-Yates shuffle algorithm
+    for (let i = slidesArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [slidesArray[i], slidesArray[j]] = [slidesArray[j], slidesArray[i]];
+    }
+    
+    // Remove all slides from container
+    slidesArray.forEach(slide => slide.remove());
+    
+    // Add slides back in random order
+    slidesArray.forEach(slide => sliderContainer.appendChild(slide));
+    
+    // Update heroSlides reference
+    heroSlides = document.querySelectorAll('.hero-slider .slide');
+    
+    // Reset navigation dots to match new order
+    const dots = document.querySelectorAll('.slider-dots .dot');
+    dots.forEach((dot, index) => {
+        dot.classList.remove('active');
+        if (index === 0) {
+            dot.classList.add('active');
+        }
+    });
+}
+
 function showSlide(index) {
-    if (!heroSlides.length) return;
+    if (!heroSlides.length || isSliderTransitioning) return;
+    
+    // Prevent rapid transitions
+    isSliderTransitioning = true;
     
     // Wrap around logic
     if (index >= heroSlides.length) individualSlideIndex = 0;
@@ -225,6 +217,21 @@ function showSlide(index) {
                 slide.classList.remove('active');
             }
         });
+        
+        // Update navigation dots
+        const dots = document.querySelectorAll('.slider-dots .dot');
+        dots.forEach((dot, i) => {
+            if (i === individualSlideIndex) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+        
+        // Allow next transition after a short delay
+        setTimeout(() => {
+            isSliderTransitioning = false;
+        }, 100);
     });
 }
 
@@ -262,8 +269,8 @@ function startAutoSlide() {
     if (sliderInterval) {
         clearInterval(sliderInterval);
     }
-    // Start new interval with consistent timing
-    sliderInterval = setInterval(autoSlide, 4000);
+    // Start new interval with consistent 5-second timing for smooth experience
+    sliderInterval = setInterval(autoSlide, 5000);
 }
 
 // Initialize slider when page loads (Optimized)
@@ -273,7 +280,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Reset index and initialize
         individualSlideIndex = 0;
         
-        // Wait for DOM to be fully ready
+        // Wait for DOM and images to be ready
         setTimeout(() => {
             if (initializeSlider()) {
                 // Start auto-play only after successful initialization
@@ -282,7 +289,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Add touch support for mobile
                 addTouchSupport(heroSlider);
             }
-        }, 100);
+        }, 300); // Increased delay to prevent page freezing
     }
 });
 
