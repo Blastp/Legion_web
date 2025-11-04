@@ -71,9 +71,9 @@ body {
     transform: translateY(-2px);
 }
 
-/* Mobile Menu Toggle - Always visible */
+/* Mobile Menu Toggle - Hidden by default (desktop) */
 .mobile-menu-toggle {
-    display: flex;
+    display: none;
     flex-direction: column;
     background: none;
     border: none;
@@ -1180,6 +1180,10 @@ footer {
         transform: translateY(-2px);
     }
     
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    
     /* Prevenir scroll cuando el menú está abierto */
     body.menu-open {
         overflow: hidden;
@@ -1998,6 +2002,10 @@ body:has(.players-grid) .tackle-section {
         flex-direction: row;
         justify-content: space-between;
         background: rgba(0, 0, 0, 0.95);
+    }
+    
+    .mobile-menu-toggle {
+        display: flex;
     }
     
     .nav-links {
