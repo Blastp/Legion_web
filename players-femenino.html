@@ -109,10 +109,10 @@
                     </div>
                 </div>
 
-                <!-- Jugadora 4 -->
+                <!-- Jugadora 4 - Delfina Lobo (Delfi) -->
                 <div class="player-card" onclick="togglePlayerInfo(this)">
                     <div class="player-photo">
-                        <img src="imagesLGN/jugadora4_fem.jpg" alt="Jugadora 4">
+                        <img src="imagesLGN/delfi.jpg" alt="Delfina Lobo">
                         <div class="player-overlay">
                             <i class="fas fa-info-circle"></i>
                             <span>Ver información</span>
@@ -121,11 +121,11 @@
                     <div class="player-info">
                         <h3>Información de la Jugadora</h3>
                         <div class="player-details">
-                            <p><strong>Nombre:</strong> Lucia</p>
-                            <p><strong>Apellido:</strong> Silva</p>
-                            <p><strong>Edad:</strong> 22</p>
-                            <p><strong>Experiencia:</strong> 3 años</p>
-                            <p><strong>Posición:</strong> DB</p>
+                            <p><strong>Nombre:</strong> Delfina</p>
+                            <p><strong>Apellido:</strong> Lobo</p>
+                            <p><strong>Edad:</strong> 20</p>
+                            <p><strong>Experiencia:</strong> 5 años</p>
+                            <p><strong>Posición:</strong> QB/WR</p>
                         </div>
                         <button class="close-btn" onclick="event.stopPropagation(); togglePlayerInfo(this.parentElement.parentElement)">
                             <i class="fas fa-times"></i>
@@ -133,10 +133,10 @@
                     </div>
                 </div>
 
-                <!-- Jugadora 5 -->
+                <!-- Jugadora 5 - Magali Carignano (Magui) -->
                 <div class="player-card" onclick="togglePlayerInfo(this)">
                     <div class="player-photo">
-                        <img src="imagesLGN/jugadora5_fem.jpg" alt="Jugadora 5">
+                        <img src="imagesLGN/magui.jpg" alt="Magali Carignano">
                         <div class="player-overlay">
                             <i class="fas fa-info-circle"></i>
                             <span>Ver información</span>
@@ -145,35 +145,35 @@
                     <div class="player-info">
                         <h3>Información de la Jugadora</h3>
                         <div class="player-details">
-                            <p><strong>Nombre:</strong> Isabella</p>
-                            <p><strong>Apellido:</strong> Torres</p>
-                            <p><strong>Edad:</strong> 25</p>
-                            <p><strong>Experiencia:</strong> 6 años</p>
-                            <p><strong>Posición:</strong> WR</p>
-                        </div>
-                        <button class="close-btn" onclick="event.stopPropagation(); togglePlayerInfo(this.parentElement.parentElement)">
-                            <i class="fas fa-times"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Jugadora 6 -->
-                <div class="player-card" onclick="togglePlayerInfo(this)">
-                    <div class="player-photo">
-                        <img src="imagesLGN/jugadora6_fem.jpg" alt="Jugadora 6">
-                        <div class="player-overlay">
-                            <i class="fas fa-info-circle"></i>
-                            <span>Ver información</span>
-                        </div>
-                    </div>
-                    <div class="player-info">
-                        <h3>Información de la Jugadora</h3>
-                        <div class="player-details">
-                            <p><strong>Nombre:</strong> Martina</p>
-                            <p><strong>Apellido:</strong> Ruiz</p>
-                            <p><strong>Edad:</strong> 23</p>
+                            <p><strong>Nombre:</strong> Magali</p>
+                            <p><strong>Apellido:</strong> Carignano</p>
+                            <p><strong>Edad:</strong> 28</p>
                             <p><strong>Experiencia:</strong> 1 año</p>
-                            <p><strong>Posición:</strong> DB</p>
+                            <p><strong>Posición:</strong> WR/RSH/DB</p>
+                        </div>
+                        <button class="close-btn" onclick="event.stopPropagation(); togglePlayerInfo(this.parentElement.parentElement)">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Coach - Facundo Ramirez (Pape Coach) -->
+                <div class="player-card" onclick="togglePlayerInfo(this)">
+                    <div class="player-photo">
+                        <img src="imagesLGN/pape_coach.jpg" alt="Facundo Ramirez - Coach">
+                        <div class="player-overlay">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Ver información</span>
+                        </div>
+                    </div>
+                    <div class="player-info">
+                        <h3>Información del Coach</h3>
+                        <div class="player-details">
+                            <p><strong>Nombre:</strong> Facundo</p>
+                            <p><strong>Apellido:</strong> Ramirez</p>
+                            <p><strong>Edad:</strong> 28</p>
+                            <p><strong>Experiencia:</strong> 6 años</p>
+                            <p><strong>Posición:</strong> Coach</p>
                         </div>
                         <button class="close-btn" onclick="event.stopPropagation(); togglePlayerInfo(this.parentElement.parentElement)">
                             <i class="fas fa-times"></i>
@@ -201,11 +201,6 @@
     <script src="navigation.js"></script>
     <script>
         function togglePlayerInfo(card) {
-            // Disable functionality on mobile devices
-            if (window.innerWidth <= 768) {
-                return;
-            }
-            
             // Cerrar todas las demás tarjetas abiertas
             const allCards = document.querySelectorAll('.player-card');
             allCards.forEach(otherCard => {

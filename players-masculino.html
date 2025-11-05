@@ -181,6 +181,30 @@
                     </div>
                 </div>
 
+                <!-- Jugador 7 - Facundo Ramirez (Pape) -->
+                <div class="player-card" onclick="togglePlayerInfo(this)">
+                    <div class="player-photo">
+                        <img src="imagesLGN/pape.jpg" alt="Facundo Ramirez">
+                        <div class="player-overlay">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Ver información</span>
+                        </div>
+                    </div>
+                    <div class="player-info">
+                        <h3>Información del Jugador</h3>
+                        <div class="player-details">
+                            <p><strong>Nombre:</strong> Facundo</p>
+                            <p><strong>Apellido:</strong> Ramirez</p>
+                            <p><strong>Edad:</strong> 28</p>
+                            <p><strong>Experiencia:</strong> 6 años</p>
+                            <p><strong>Posición:</strong> WR</p>
+                        </div>
+                        <button class="close-btn" onclick="event.stopPropagation(); togglePlayerInfo(this.parentElement.parentElement)">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+
             </div>
 
             <!-- Botón volver -->
@@ -201,11 +225,6 @@
     <script src="navigation.js"></script>
     <script>
         function togglePlayerInfo(card) {
-            // Disable functionality on mobile devices
-            if (window.innerWidth <= 768) {
-                return;
-            }
-            
             // Cerrar todas las demás tarjetas abiertas
             const allCards = document.querySelectorAll('.player-card');
             allCards.forEach(otherCard => {

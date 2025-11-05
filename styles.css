@@ -1200,18 +1200,29 @@ footer {
         top: 0;
         left: 0;
         width: 100%;
-        height: 100%;
+        height: 100vh;
+        min-height: 100vh;
+        position: absolute;
+        overflow: hidden;
     }
     
     .hero-slider .slide {
         width: 100%;
-        height: 100%;
+        height: 100vh;
+        min-height: 100vh;
+        position: relative;
+        overflow: hidden;
     }
     
     .hero-slider .slide img {
         width: 100%;
-        height: 100%;
+        height: 100vh;
+        min-height: 100vh;
         object-fit: cover;
+        object-position: center;
+        position: absolute;
+        top: 0;
+        left: 0;
     }
     
     /* Calendar Mobile Fix */
@@ -2014,41 +2025,48 @@ body:has(.players-grid) .tackle-section {
         left: 0;
         width: 100%;
         background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(10px);
         flex-direction: column;
-        gap: 0;
+        gap: 1rem;
         transform: translateY(-100%);
         opacity: 0;
         visibility: hidden;
         transition: all 0.3s ease;
         max-height: 0;
         overflow: hidden;
+        padding: 2rem 1rem;
+        box-sizing: border-box;
     }
     
     .nav-links.active {
         transform: translateY(0);
         opacity: 1;
         visibility: visible;
-        max-height: 300px;
+        max-height: 400px;
     }
     
     .nav-links a {
         display: block;
-        padding: 1rem;
-        border-bottom: 1px solid rgba(255, 215, 0, 0.2);
-        width: 100%;
-        font-size: 1rem;
-        text-align: center;
-        border-radius: 0;
-    }
-    
-    .nav-links a:last-child {
-        border-bottom: none;
-    }
-    
-    .nav-links a:hover {
+        padding: 1rem 1.5rem;
         background: var(--primary-color);
         color: var(--secondary-color);
-        transform: none;
+        border: none;
+        border-radius: 25px;
+        font-size: 1rem;
+        font-weight: 600;
+        text-align: center;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+    }
+    
+    .nav-links a:hover,
+    .nav-links a:active,
+    .nav-links a:focus {
+        background: var(--text-color);
+        color: var(--secondary-color);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
     }
     
     /* Hero Section */
@@ -2310,22 +2328,41 @@ body:has(.players-grid) .tackle-section {
     
     .flip-card {
         width: 100%;
-        max-width: 350px;
+        max-width: 400px;
         height: auto;
-        min-height: 200px;
+        min-height: 350px;
     }
     
     .event-card {
-        padding: 1.5rem;
+        padding: 2rem 1.5rem;
         height: 100%;
+        min-height: 300px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .event-card img {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 1rem;
+        border-radius: 50%;
+        object-fit: cover;
     }
     
     .event-card h3 {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
         margin: 1rem 0;
+        line-height: 1.3;
+    }
+    
+    .btn {
+        margin-top: auto;
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+        white-space: nowrap;
     }
     
     .event-date {
@@ -2382,11 +2419,36 @@ body:has(.players-grid) .tackle-section {
     }
     
     .player-overlay {
-        display: none;
+        opacity: 1;
+        visibility: visible;
+        background: rgba(0, 0, 0, 0.8);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+    
+    .player-overlay span {
+        display: block;
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+        text-align: center;
     }
     
     .close-btn {
-        display: none;
+        display: block;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: rgba(255, 215, 0, 0.9);
+        color: black;
+        border: none;
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        cursor: pointer;
+        z-index: 10;
     }
     
     .player-details {
@@ -2482,16 +2544,28 @@ body:has(.players-grid) .tackle-section {
     
     /* Calendar very small screens */
     .flip-card {
-        max-width: 300px;
-        min-height: 180px;
+        max-width: 350px;
+        min-height: 320px;
     }
     
     .event-card {
-        padding: 1rem;
+        padding: 1.5rem 1rem;
+        min-height: 300px;
+    }
+    
+    .event-card img {
+        width: 70px;
+        height: 70px;
     }
     
     .event-card h3 {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
+        line-height: 1.2;
+    }
+    
+    .btn {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
     }
     
     /* Players optimization for very small screens */
