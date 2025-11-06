@@ -1214,6 +1214,14 @@ footer {
         overflow: hidden;
     }
     
+    /* Para sliders con background-image (index, flag) */
+    .hero-slider .slide {
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+    }
+    
+    /* Para sliders con img tags (tackle) */
     .hero-slider .slide img {
         width: 100%;
         height: 100vh;
@@ -1223,6 +1231,7 @@ footer {
         position: absolute;
         top: 0;
         left: 0;
+        z-index: 1;
     }
     
     /* Calendar Mobile Fix */
@@ -2345,8 +2354,8 @@ body:has(.players-grid) .tackle-section {
     }
     
     .event-card img {
-        width: 80px;
-        height: 80px;
+        width: 100px;
+        height: 100px;
         margin-bottom: 1rem;
         border-radius: 50%;
         object-fit: cover;
@@ -2419,21 +2428,41 @@ body:has(.players-grid) .tackle-section {
     }
     
     .player-overlay {
-        opacity: 1;
-        visibility: visible;
-        background: rgba(0, 0, 0, 0.8);
+        opacity: 0;
+        visibility: hidden;
+        background: rgba(255, 215, 0, 0.85);
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         transition: all 0.3s ease;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 15px;
+    }
+    
+    .player-card:hover .player-overlay,
+    .player-card:active .player-overlay,
+    .player-card:focus .player-overlay {
+        opacity: 1;
+        visibility: visible;
     }
     
     .player-overlay span {
         display: block;
-        font-size: 0.9rem;
+        font-size: 1rem;
         margin-top: 0.5rem;
         text-align: center;
+        color: var(--secondary-color);
+        font-weight: 600;
+    }
+    
+    .player-overlay i {
+        color: var(--secondary-color);
+        font-size: 1.5rem;
     }
     
     .close-btn {
@@ -2554,8 +2583,8 @@ body:has(.players-grid) .tackle-section {
     }
     
     .event-card img {
-        width: 70px;
-        height: 70px;
+        width: 90px;
+        height: 90px;
     }
     
     .event-card h3 {
@@ -2587,11 +2616,12 @@ body:has(.players-grid) .tackle-section {
     }
     
     .player-overlay span {
-        display: none; /* Hide text on very small screens, keep only icon */
+        display: block;
+        font-size: 0.9rem;
     }
     
     .player-overlay i {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
     }
     
     .hero-subtitle {
@@ -2781,4 +2811,16 @@ body:has(.players-grid) .tackle-section {
     min-height: 350px !important;
     object-position: center 20% !important;
     transform: scale(1.05) !important;
+}
+
+/* Ajuste específico para la imagen "salto" - subir posición */
+.hero-slider .slide img[src*="salto.jpg"] {
+    object-position: center 20% !important;
+}
+
+/* Para pantallas móviles - ajuste adicional de la imagen salto */
+@media (max-width: 768px) {
+    .hero-slider .slide img[src*="salto.jpg"] {
+        object-position: center 15% !important;
+    }
 }
