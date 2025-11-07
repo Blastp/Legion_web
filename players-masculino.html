@@ -7,6 +7,9 @@
     <link rel="icon" type="image/png" href="imagesLGN/logo_legion.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="players-page">
     <!-- Navbar -->
@@ -198,6 +201,54 @@
                             <p><strong>Edad:</strong> 37</p>
                             <p><strong>Experiencia:</strong> 5 años</p>
                             <p><strong>Posición:</strong> WR</p>
+                        </div>
+                        <button class="close-btn" onclick="event.stopPropagation(); togglePlayerInfo(this.parentElement.parentElement)">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Jugador 8 - Santiago Chiabra -->
+                <div class="player-card" onclick="togglePlayerInfo(this)">
+                    <div class="player-photo">
+                        <img src="imagesLGN/cabra.jpg" alt="Santiago Chiabra">
+                        <div class="player-overlay">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Ver información</span>
+                        </div>
+                    </div>
+                    <div class="player-info">
+                        <h3>Información del Jugador</h3>
+                        <div class="player-details">
+                            <p><strong>Nombre:</strong> Santiago</p>
+                            <p><strong>Apellido:</strong> Chiabra</p>
+                            <p><strong>Edad:</strong> 26</p>
+                            <p><strong>Experiencia:</strong> 1 año</p>
+                            <p><strong>Posición:</strong> DB/WR</p>
+                        </div>
+                        <button class="close-btn" onclick="event.stopPropagation(); togglePlayerInfo(this.parentElement.parentElement)">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Jugador 9 - Patricio Chiabra -->
+                <div class="player-card" onclick="togglePlayerInfo(this)">
+                    <div class="player-photo">
+                        <img src="imagesLGN/pato.jpg" alt="Patricio Chiabra">
+                        <div class="player-overlay">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Ver información</span>
+                        </div>
+                    </div>
+                    <div class="player-info">
+                        <h3>Información del Jugador</h3>
+                        <div class="player-details">
+                            <p><strong>Nombre:</strong> Patricio</p>
+                            <p><strong>Apellido:</strong> Chiabra</p>
+                            <p><strong>Edad:</strong> 29</p>
+                            <p><strong>Experiencia:</strong> 1 año</p>
+                            <p><strong>Posición:</strong> RSH/DB</p>
                         </div>
                         <button class="close-btn" onclick="event.stopPropagation(); togglePlayerInfo(this.parentElement.parentElement)">
                             <i class="fas fa-times"></i>

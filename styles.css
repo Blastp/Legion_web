@@ -24,6 +24,32 @@ body {
     color: var(--text-color);
 }
 
+/* Typography with Outfit for descriptive text */
+p, 
+.player-details p,
+.sponsor-message p,
+.about-text p,
+.faba-text p,
+.contact-info p,
+.event-description,
+.flag-features dd,
+.position-card p,
+dl dd,
+.card p,
+.team-card p {
+    font-family: 'Outfit', 'Arial', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+/* Keep titles and headings with original font */
+h1, h2, h3, h4, h5, h6,
+.nav-brand,
+.navbar,
+.golden-army {
+    font-family: 'Arial', 'Helvetica Neue', sans-serif;
+}
+
 /* Navbar Styles */
 .navbar {
     background: var(--gradient-black-gold);
@@ -847,6 +873,30 @@ section.animate-in {
     color: var(--accent-color);
     background: rgba(255, 215, 0, 0.1);
     transform: scale(1.1);
+}
+
+/* Sponsor Message */
+.sponsor-message {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.sponsor-message p {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    font-weight: 600;
+    background: var(--secondary-color);
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+    margin: 0;
+}
+
+.sponsor-message p:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
 }
 
 /* Footer */
@@ -2354,8 +2404,8 @@ body:has(.players-grid) .tackle-section {
     }
     
     .event-card img {
-        width: 100px;
-        height: 100px;
+        width: 130px;
+        height: 130px;
         margin-bottom: 1rem;
         border-radius: 50%;
         object-fit: cover;
@@ -2583,8 +2633,8 @@ body:has(.players-grid) .tackle-section {
     }
     
     .event-card img {
-        width: 90px;
-        height: 90px;
+        width: 120px;
+        height: 120px;
     }
     
     .event-card h3 {
@@ -2724,6 +2774,100 @@ body:has(.players-grid) .tackle-section {
     .btn:hover {
         transform: none;
         box-shadow: initial;
+    }
+}
+
+/* Fix for mobile portrait orientation - player overlay should stay at bottom */
+@media (max-width: 768px) and (orientation: portrait) {
+    .player-overlay {
+        opacity: 0;
+        visibility: hidden;
+        background: rgba(255, 215, 0, 0.85);
+        position: absolute;
+        top: auto;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: auto;
+        padding: 0.6rem;
+        border-radius: 0 0 15px 15px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+    
+    .player-card:hover .player-overlay,
+    .player-card:active .player-overlay,
+    .player-card:focus .player-overlay {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .player-overlay span {
+        display: inline;
+        font-size: 0.9rem;
+        margin-top: 0;
+        margin-left: 0.4rem;
+        text-align: center;
+        color: var(--secondary-color);
+        font-weight: 600;
+    }
+    
+    .player-overlay i {
+        color: var(--secondary-color);
+        font-size: 1rem;
+        margin-right: 0.4rem;
+    }
+}
+
+/* Fix for mobile portrait orientation - slider images */
+@media (max-width: 768px) and (orientation: portrait) {
+    .hero-slider {
+        height: 50vh;
+        min-height: 300px;
+        background: #000;
+    }
+    
+    .hero-slider .slide {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    
+    .hero-slider .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+        background-size: cover !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
+        display: block;
+        min-height: 100%;
+    }
+    
+    /* Specific adjustments for problematic slides in portrait */
+    .hero-slider .slide:nth-child(6) img,
+    .hero-slider .slide:nth-child(8) img,
+    .hero-slider .slide:nth-child(9) img,
+    .hero-slider .slide:nth-child(11) img {
+        object-position: center 30% !important;
+        transform: scale(1.1);
+    }
+    
+    /* Ensure all slider images fill the container */
+    .hero-slider .slide:nth-child(1) img,
+    .hero-slider .slide:nth-child(2) img,
+    .hero-slider .slide:nth-child(3) img,
+    .hero-slider .slide:nth-child(4) img,
+    .hero-slider .slide:nth-child(5) img,
+    .hero-slider .slide:nth-child(7) img,
+    .hero-slider .slide:nth-child(10) img {
+        object-position: center center !important;
+        transform: scale(1.05);
     }
 }
 
