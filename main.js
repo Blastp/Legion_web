@@ -1,4 +1,120 @@
 // Funcionalidades generales del sitio web Legionarios
+
+// MOBILE DETECTION SYSTEM - Detección inteligente de dispositivos móviles
+function detectMobileDevice() {
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    const isSmallScreen = window.innerWidth <= 768;
+    
+    return {
+        isMobile: isMobileDevice,
+        isTouch: isTouchDevice,
+        isSmallScreen: isSmallScreen,
+        isRealMobile: isMobileDevice && isTouchDevice
+    };
+}
+
+// Apply mobile-specific classes and styles
+function applyMobileStyles() {
+    const device = detectMobileDevice();
+    const body = document.body;
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    
+    console.log(`Page: ${currentPage} - Mobile Detection:`, device);
+    
+    // Add classes based on device detection
+    if (device.isRealMobile) {
+        body.classList.add('real-mobile-device');
+        console.log('✅ Real mobile device detected - applying mobile styles');
+    }
+    if (device.isMobile) {
+        body.classList.add('mobile-device');
+    }
+    if (device.isTouch) {
+        body.classList.add('touch-device');
+    }
+    if (device.isSmallScreen) {
+        body.classList.add('small-screen');
+    }
+    
+    // Force mobile slider adjustments for ALL pages with sliders
+    if (device.isRealMobile) {
+        setTimeout(() => {
+            adjustSlidersForMobile();
+        }, 100); // Small delay to ensure DOM is ready
+    }
+}
+
+// Slider mobile adjustments - Works on ALL sliders in ALL pages
+function adjustSlidersForMobile() {
+    // Find ALL hero sliders in the current page
+    const sliders = document.querySelectorAll('.hero-slider');
+    
+    if (sliders.length === 0) return; // Exit if no sliders found
+    
+    console.log(`Mobile adjustment: Found ${sliders.length} sliders on this page`);
+    
+    sliders.forEach((slider, index) => {
+        // Adjust slider container
+        slider.style.height = window.innerHeight * 0.5 + 'px';
+        slider.style.minHeight = '300px';
+        slider.style.background = '#000';
+        slider.style.overflow = 'hidden';
+        
+        // Adjust all slides within this slider
+        const slides = slider.querySelectorAll('.slide');
+        slides.forEach(slide => {
+            slide.style.width = '100%';
+            slide.style.height = '100%';
+            slide.style.overflow = 'hidden';
+        });
+        
+        // Adjust all images within this slider
+        const images = slider.querySelectorAll('.slide img');
+        images.forEach(img => {
+            img.style.objectFit = 'cover';
+            img.style.objectPosition = 'center center';
+            img.style.width = '100%';
+            img.style.height = '100%';
+            img.style.minHeight = '100%';
+            img.style.display = 'block';
+            img.style.transform = 'scale(1.02)';
+            
+            // Add mobile-optimized loading
+            img.style.webkitTransform = 'translateZ(0)';
+            img.style.backfaceVisibility = 'hidden';
+        });
+        
+        console.log(`Slider ${index + 1}: Adjusted ${images.length} images`);
+    });
+    
+    // Special adjustments for portrait orientation on mobile
+    if (window.innerHeight > window.innerWidth) {
+        const portraitImages = document.querySelectorAll('.hero-slider .slide img');
+        portraitImages.forEach(img => {
+            img.style.transform = 'scale(1.05)';
+            img.style.objectPosition = 'center 30%';
+        });
+        console.log('Applied portrait-specific adjustments');
+    }
+}
+
+// Run on load and orientation change
+document.addEventListener('DOMContentLoaded', function() {
+    applyMobileStyles();
+});
+
+window.addEventListener('orientationchange', function() {
+    setTimeout(applyMobileStyles, 100);
+});
+
+window.addEventListener('resize', function() {
+    if (detectMobileDevice().isRealMobile) {
+        setTimeout(adjustSlidersForMobile, 100);
+    }
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     
     // Smooth scrolling para la navegación
