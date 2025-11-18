@@ -17,6 +17,14 @@
     box-sizing: border-box;
 }
 
+/* Force proper mobile rendering */
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 body {
     font-family: 'Arial', 'Helvetica Neue', sans-serif;
     font-weight: 400;
@@ -858,7 +866,8 @@ section.animate-in {
 }
 
 .social-links a {
-    color: var(--secondary-color);
+    color: var(--text-color);
+    text-decoration: none;
     transition: all 0.3s ease;
     padding: 1rem;
     border-radius: 50%;
@@ -1189,8 +1198,11 @@ footer {
     border-color: var(--primary-color);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
+/* Responsive Design - Enhanced Mobile Detection */
+@media (max-width: 768px), 
+       (max-device-width: 768px),
+       screen and (orientation: portrait) and (max-width: 768px),
+       screen and (orientation: landscape) and (max-height: 768px) {
     .nav-links {
         position: fixed;
         top: 0;
@@ -2032,8 +2044,10 @@ body:has(.players-grid) .tackle-section {
     }
 }
 
-/* Global Mobile Fixes */
-@media (max-width: 768px) {
+/* Global Mobile Fixes - Enhanced Detection */
+@media (max-width: 768px), 
+       (max-device-width: 768px),
+       screen and (max-width: 768px) {
     /* Prevent horizontal scroll */
     html, body {
         overflow-x: hidden;
